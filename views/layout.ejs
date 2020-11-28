@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<%- include('../layouts/partials/commonfiles/style') %>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<link rel="icon" href="/img/favicon.png" sizes="16x16" type="image/png">
+	<title>Send Money</title>
+</head>
+
+<body <% if (alert.alert){%>onload="handler('<%= alert.type%>','<%= alert.title%>',' <%= alert.msg %>')" <%}%>>
+	
+	<% if (isAuthenticated){ %> <%- include('../layouts/partials/admin/topbar') %>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<%- include('../layouts/partials/admin/sidebar') %>
+			</div>
+			<div class="col-md-9">
+				<%- body %>
+			</div>
+		</div>
+	</div>
+
+	<% } else {%>
+	<%- include('../layouts/partials/home/topbar') %>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<%- body %>
+			</div>
+		</div>
+	</div>
+	<% } %>
+
+	<%- include('../layouts/partials/home/modals') %>
+	<%- include('../layouts/partials/admin/modals') %>
+	<!--Load scripts -->
+	<%- include('../layouts/partials/commonfiles/scripts') %>
+</body>
+
+
+</html>

@@ -1,0 +1,59 @@
+<div class="content-wrapper">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="clo-md-4">
+            <h4 class="card-title">Agents</h4>
+          </div>
+          <div class="col-md-4"></div>
+          <div class="col-md-4 pull-right">
+            <a href="/add-agent" style="margin-left: 50%;" type="button" class="btn btn-outline-success btn-icon-text pull-right">
+              <i class="ti-plus btn-icon-prepend"></i>                                                    
+              Add Agent
+            </a>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-12">
+            <div class="table-responsive">
+              <table id="example" class="table table-borderless">
+                <thead>
+                  <tr>
+                      <th>ID</th>
+                      <th>Name</th>
+                      <th>Contact Number</th>
+                      <th>Address</th>
+                      <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <% for (user of users){ %>
+                  <tr class="package_tr" data-id="<%= user._id %>" data-type="category">
+                      <td>
+                        <%= user.agentCode %> 
+                      </td>
+                      <td>
+                        <%= user.firstname %> <%= user.lastname %>
+                      </td>
+                      <td>
+                        <%= user.address[0].contact %>
+                      </td>
+                      <td>
+                        <%= user.address[0].address %> <%= user.address[0].city %>
+                      </td>
+                      <td class="action-link">
+                          <a class="edit" href="#" title="Edit" data-toggle="modal" data-target="#editDetailModal"><i class="ti-write menu-icon" style="font-size: 1.1rem;line-height: 1;margin-right: 0.6rem;"></i>Edit</a>
+                          <a class="delete" href="#" title="Delete" data-toggle="modal" data-target="#deleteDetailModal"><i class="ti-trash menu-icon" style="font-size: 1.1rem;line-height: 1;margin-right: 0.6rem;"></i>Delete</a>
+                      </td>
+                  </tr>
+                  <% } %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- content-wrapper ends -->

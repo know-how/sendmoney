@@ -1,0 +1,27 @@
+
+<script src="/mdb/js/jquery.js"></script>
+<script src="/mdb/js/mdb.js"></script>
+<script src="/mdb/dataTables/jquery.dataTables.min.js"></script>
+<script src="/mdb/dataTables/dataTables.buttons.min.js"></script>
+<script src="/bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>
+<script src="/mdb/dataTables/buttons.flash.min.js"></script>
+<script src="/mdb/dataTables/jszip.min.js"></script>
+<script src="/mdb/dataTables/pdfmake.min.js"></script>
+<!--<script src="/bootstrap-4.5.2-dist/datatables.net/jquery.dataTables.js"></script>
+<script src="/bootstrap-4.5.2-dist/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+<script src="/js/dataTables.js"></script>-->
+<script src="/js/sweetalert.js"></script>
+<script src="/js/message-handler.js"></script>
+<script src="/js/ajax.js"></script>
+<script src="/mdb/dataTables/buttons.html5.min.js"></script>
+<script src="/mdb/dataTables/buttons.print.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable( {
+            dom: 'Bfrtip',
+            buttons: [
+                'copy', 'csv', 'excel', 'pdf', 'print'
+            ]
+        } );
+    } );
+</script>

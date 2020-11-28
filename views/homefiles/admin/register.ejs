@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!-- Halfmoon CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="/bootstrap-4.5.2-dist/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <link rel="stylesheet" href="/css/style.css">
+        <link rel="stylesheet" href="/bootstrap-4.5.2-dist/datatables.net-bs4/dataTables.bootstrap4.css">
+  
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      </head>
+      <body>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2 class="blue-text">Admin Registration</h2>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="form">
+            <div class="container">
+                <div class="row">
+                    <form class="col-md-12" action="/auth/sign-up" method="POST" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group row">
+                                        <div class="col-md-6 row">
+                                            <label class="col-md-4" for="exampleInputEmail1">Firstname</label>
+                                            <input type="text" name="firstname" class="form-control col-md-6 firstname" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                        </div>
+                                        <div class="col-md-6 row">
+                                            <label class="col-md-4" for="exampleInputEmail1">Lastname</label>
+                                            <input type="text" name="lastname" class="form-control col-md-6 lastname" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-6 row">
+                                            <label class="col-md-4" for="exampleInputEmail1">Email</label>
+                                            <input type="email" name="email" class="form-control col-md-6 " id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                        </div>
+                                        <div class="col-md-6 row">
+                                            <label class="col-md-4" for="exampleInputEmail1">AgentCode</label>
+                                            <input type="text" name="agentCode" class="form-control col-md-6 agentCode" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-6 row">
+                                            <label class="col-md-4" for="exampleInputEmail1">Address</label>
+                                            <input type="text" name="address" class="form-control col-md-6 " id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                        </div>
+                                        <div class="col-md-6 row">
+                                            <label class="col-md-4" for="exampleInputEmail1">Contact</label>
+                                            <input type="text" name="contact" class="form-control col-md-6 " id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-6 row">
+                                            <label class="col-md-4" for="exampleInputEmail1">Altcontact</label>
+                                            <input type="text" name="altcontact" class="form-control col-md-6 " id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                        </div>
+                                        <div class="col-md-6 row">
+                                            <label class="col-md-4" for="exampleInputEmail1">Next of keen</label>
+                                            <input type="text" name="next_of_keen" class="form-control col-md-6 " id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-6 row">
+                                            <label class="col-md-4" for="exampleInputEmail1">Next of keen address</label>
+                                            <input type="text" name="next_of_keen_address" class="form-control col-md-6 " id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                        </div>
+                                        <div class="col-md-6 row">
+                                            <label class="col-md-4" for="exampleInputEmail1">Next of keen Contact</label>
+                                            <input type="text" name="next_of_keen_contact" class="form-control col-md-6 " id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-6 row">
+                                            <label class="col-md-4" for="exampleInputEmail1">Relationship</label>
+                                            <input type="text" name="relationship" class="form-control col-md-6 " id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                        </div>
+                                        <div class="col-md-6 row">
+                                            <label class="col-md-4" for="exampleInputEmail1">City</label>
+                                            <input type="text" name="city" class="form-control col-md-6 " id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-md-6 row">
+                                            <label class="col-md-4" for="exampleInputEmail1">Picture</label>
+                                            <input type="file" name="image" class="form-control col-md-6 " id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                        </div>
+                                        <div class="col-md-6 row">
+                                            <label class="col-md-4" for="exampleInputEmail1">Password</label>
+                                            <input type="text" name="password" class="form-control col-md-6 password" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="modal-footer">
+                            <input type="hidden" name="type" value="5673">
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                        </div>
+                    
+                    </form>
+                </div>
+            </div>
+        </section>
+    </body>
+    <!-- Requires halfmoon.js for toggling sidebar -->
+    <script src="/jquery/jquery.min.js"></script>
+    <script src="/bootstrap-4.5.2-dist/js/bootstrap.min.js"></script>
+    <script src="/bootstrap-4.5.2-dist/datatables.net/jquery.dataTables.js"></script>
+    <script src="/bootstrap-4.5.2-dist/datatables.net-bs4/dataTables.bootstrap4.js"></script>
+    <script src="/js/dataTables.js"></script>
+    <script src="/js/ajax.js"></script>
+</html>

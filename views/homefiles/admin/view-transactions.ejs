@@ -1,0 +1,85 @@
+<div class="content-wrapper">
+	<div class="card">
+		<div class="card-body">
+			<div class="row">
+				<div class="clo-md-4">
+					<h4 class="card-title">Transaction Log</h4>
+				</div>
+				<div class="col-md-4"></div>
+				<div class="col-md-4 pull-right">
+					<a href="#" data-toggle="modal" data-target="#addTransaction" style="margin-left: 50%;"
+						type="button" data-toggle="modal" data-target="#AddCategory"
+						class="btn btn-outline-success btn-icon-text pull-right">
+						<i class="ti-plus btn-icon-prepend"></i>
+						Send Money
+					</a>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-12">
+					<div class="table-responsive">
+						<table id="example" class="table table-stripped">
+							<thead>
+								<tr>
+									<th>Date</th>
+									<th>Ref code</th>
+									<th>Status</th>
+									<th>Sender</th>
+									<th>Receiver </th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% for (transaction of transactions){ %>
+								<%if(transaction.status == "Pending"){ %>
+
+								<tr class="package_tr" style="background-color:brown;" data-id="<%= transaction._id %>"
+									data-type="category">
+									<td style="cursor: pointer;"
+										onclick="transactionDetails('<%= transaction.transaction_code %>')">
+										<%= transaction.createdAt %></td>
+									<td><%= transaction.transaction_code %></td>
+									<td><%= transaction.status %></td>
+									<td><%= transaction.senderName %></td>
+									<td><%= transaction.receiverName %></td>
+									<td class="action-link">
+										<a class="edit" disabled
+											onclick="transactionClear('<%= transaction.transaction_code %>')" href="#"
+											title="Edit"><i class="ti-write menu-icon"
+												style="font-size: 1.1rem;line-height: 1;margin-right: 0.6rem;"></i>Clear</a>
+										<a class="delete" href="#" title="Delete"
+											onclick="handleDeletes('Delete Transaction','<%= transaction.transaction_code %>','transaction', 'Please not that the transaction record will be deleted in the system')"><i
+												class="ti-trash menu-icon"
+												style="font-size: 1.1rem;line-height: 1;margin-right: 0.6rem;"></i>Delete</a>
+									</td>
+								</tr>
+								<% } else{ %>
+								<tr class="package_tr" style="background-color:green" data-id="<%= transaction._id %>"
+									data-type="category">
+									<td style="cursor: pointer;"
+										onclick="transactionDetails('<%= transaction.transaction_code %>')">
+										<%= transaction.createdAt %></td>
+									<td><%= transaction.transaction_code %></td>
+									<td><%= transaction.status %></td>
+									<td><%= transaction.senderName %></td>
+									<td><%= transaction.receiverName %></td>
+									<td class="action-link">
+
+										<a class="delete" href="#" title="Delete"
+											onclick="handleDeletes('Delete Transaction','<%= transaction.transaction_code %>','transaction', 'Please not that the transaction record will be deleted in the system')"><i
+												class="ti-trash menu-icon"
+												style="font-size: 1.1rem;line-height: 1;margin-right: 0.6rem;"></i>Delete</a>
+									</td>
+								</tr>
+								<% } %>
+								<% } %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- content-wrapper ends -->

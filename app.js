@@ -11,7 +11,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require('passport');
 require('dotenv').config();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
 const config = require('./config/database');
 const socketIO = require('./config/io');
 const mongoose = require('mongoose');

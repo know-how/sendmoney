@@ -1,0 +1,37 @@
+/*************************************
+    Welcome Screen
+*************************************/
+img.welcome {
+    height: 150px;
+    width: auto;
+    margin-top: 50px;
+}
+
+
+
+
+
+/*************************************
+    Sign In Form
+*************************************/
+#signIn .md-form {
+    position: relative;
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+}
+
+#signIn .pb-5 {
+    padding-bottom: 0rem !important;
+}
+
+
+
+
+
+/*************************************
+    Form General
+*************************************/
+.card .md-form label {
+    font-weight: 300;
+    color: white;
+}

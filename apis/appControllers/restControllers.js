@@ -74,7 +74,7 @@ router.post('/add-transctions',verifyToken,(req,res)=>{
           if (err) {
             res.json(err);
           }else{
-            sendMail(newTransactionMailer, newTransaction)
+           // sendMail(newTransactionMailer, newTransaction)
             res.json({
               'code':0,
               'msg': 'success',
@@ -132,16 +132,38 @@ router.get('/view-transaction-history/:agent_code/:view_type', verifyToken,(req,
     if(err){
         res.sendStatus(403);
     }else{
-      Transaction.find({/*agentCode:req.params.agent_code*/},(err, transactions)=>{
+      Transaction.find({$or:[{agentCode:req.params.agent_code},{clearBy : req.params.agent_code}]},(err, transactions)=>{
         if(err){
             res.json(err);
         }
         if(req.params.view_type == "history"){
-            const date = 
-            transactions.forEach(element=>{});
+          res.json(transactions)
+        }else if(req.params.view_type == "dashboard"){
+          const array = [];
+          transactions.forEach(element => {
+            const dateNow = new Date()
+            const transction_date = new Date(element.createdAt);
+            const transction_cleared = new Date(element.updatedAt)
+            
+            if(dateNow.getDate()==transction_date.getDate() && 
+              dateNow.getDay() ==transction_date.getDay() && 
+              dateNow.getFullYear() == transction_date.getFullYear()  ){
+                array.push(element);
+                
+              }
+            if(element.clearBy == req.params.agent_code ){
+              if(dateNow.getDate()==transction_cleared.getDate() && 
+              dateNow.getDay() ==transction_cleared.getDay() && 
+              dateNow.getFullYear() == transction_cleared.getFullYear()  ){
+                array.push(element);
+              
+              }
+            }
+            
+          });
+          res.json(array);
         }
-        console.log(transactions)
-        res.json(transactions)
+        
       });
     }
   });
@@ -165,34 +187,34 @@ router.get('/all-agents', verifyToken,(req,res)=>{
   });
 });
 
-router.get('/view-agent/:id', /*verifyToken,*/async(req,res)=>{
-  /*jwt.verify(req.token, keys.jwtkey.secret, async(err)=>{
+router.get('/view-agent/:id', verifyToken,async(req,res)=>{
+  jwt.verify(req.token, keys.jwtkey.secret, async(err)=>{
     if(err){
         res.sendStatus(403);
-    }else{*/
+    }else{
          await User.findOne({agentCode:req.params.id}, (err, agent)=>{
              if(err){
                  res.json(err);
              }
            res.json(agent)
          });
-    /*}
-  });*/
+    }
+  });
 });
 
-router.get('/view-devices/:id', /*verifyToken,*/async(req,res)=>{
-  /*jwt.verify(req.token, keys.jwtkey.secret, async(err)=>{
+router.get('/view-devices/:id', verifyToken,async(req,res)=>{
+  jwt.verify(req.token, keys.jwtkey.secret, async(err)=>{
     if(err){
         res.sendStatus(403);
-    }else{*/
+    }else{
          await User.find({$or:[{agentCode:req.params.id},{email:req.params.id}]}, (err, devices)=>{
              if(err){
                  res.json(err);
              }
            res.json(devices)
          });
-    /*}
-  });*/
+    }
+  });
 });
 
 router.get('/check-device/:id', verifyToken,(req,res)=>{

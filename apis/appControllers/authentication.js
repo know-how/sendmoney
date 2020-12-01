@@ -35,7 +35,7 @@ router.get('/artist-verify-account'/*, ensureAuthentication*/, (req, res)=>{
     });
 });
 
-router.get('/update-profile/:field/:value', verifyToken, (req, res)=>{
+router.get('/update-profile/:field/:value/:agentCode', verifyToken, (req, res)=>{
     jwt.verify(req.token, keys.jwtkey.secret, async(err)=>{
         if (err){
             res.sendStatus(403);
@@ -44,6 +44,7 @@ router.get('/update-profile/:field/:value', verifyToken, (req, res)=>{
              const field = req.params.field;
              const value = req.params.value;
              let myMap = new Map().set(field, value);
+             console.log(field)
              if(field =="address" ||
               field=="contact" ||
               field =="altcontact" ||
@@ -53,9 +54,8 @@ router.get('/update-profile/:field/:value', verifyToken, (req, res)=>{
               field=="city" ||
               field =="country"){
                 const query = {$set:{address:strMapToObj(myMap)}}
-                User.updateOne({agentCode : 'kk24962020'}, query,()=>{
-                    console.log('done')
-                    User.findOne({agentCode: 'kk24962020'}, (err, agent)=>{
+                User.updateOne({agentCode : req.params.agentCode}, query,()=>{
+                    User.findOne({agentCode: req.params.agentCode}, (err, agent)=>{
                      if(err){
                          res.json(err);
                      }
@@ -65,7 +65,6 @@ router.get('/update-profile/:field/:value', verifyToken, (req, res)=>{
               }else if(field == "facebook" || field =="twitter" || field=="instagram" ){
                 const query = {$set:{socialNetwork:strMapToObj(myMap)}}
                 User.updateOne({agentCode : 'kk24962020'}, query,()=>{
-                    console.log('done')
                     User.findOne({agentCode: 'kk24962020'}, (err, agent)=>{
                      if(err){
                          res.json(err);
@@ -75,9 +74,8 @@ router.get('/update-profile/:field/:value', verifyToken, (req, res)=>{
                 });
               }else{
                 const query = {$set:strMapToObj(myMap)}
-                User.updateOne({agentCode : 'kk24962020'}, query,()=>{
-                    console.log('done')
-                    User.findOne({agentCode: 'kk24962020'}, (err, agent)=>{
+                User.updateOne({agentCode : req.params.agentCode}, query,()=>{
+                    User.findOne({agentCode: req.params.agentCode}, (err, agent)=>{
                      if(err){
                          res.json(err);
                      }
@@ -280,7 +278,7 @@ router.post('/reset-password', [
                         pwd= hash;
                       User.updateOne({email:req.body.identifier},{$set:{ password:pwd}} , (err)=>{
                         if (err) throw err;
-                        var url= 'http://localhost:3000/auth/sign-in'
+                        var url= 'http://178.128.35.63:8000/auth/sign-in'
                         var token = user.generateJwt(url);
                         res.json({
                             "code":200,
@@ -355,7 +353,7 @@ router.get('/check-resetCode/:identifier',(req,res)=>{
 //Log user in
 router.post('/sign-in', passport.authenticate('local',{failureRedirect: '/auth/sign-in-failer'}),
     (req, res)=>{
-        var url= 'http://localhost:3000/auth/sign-in'
+        var url= 'http://178.128.35.63:8000/auth/sign-in'
         var token = req.user.generateJwt(url);
         res.json({
           "access_token" : token,
